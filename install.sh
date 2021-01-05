@@ -109,7 +109,7 @@ sudo systemctl enable postgres.service
 sudo su - postgres -c "createuser $lms_db_user"
 sudo -u postgres psql -c "ALTER USER $lms_db_user PASSWORD '$lms_db_password'"
 sudo su - postgres -c "createdb -E UNICODE -O $lms_db_user $lms_db"
-sudo su - $shell_user -c "export PGPASSWORD=$lms_db_password; psql -d $lms_db -U $lms_db_user -f $LMS_DIR/doc/lms.pgsql"
+sudo su - $shell_user -c "psql -f $LMS_DIR/doc/lms.pgsql"
 
 echo
 echo "LMS DIR $LMS_DIR"
